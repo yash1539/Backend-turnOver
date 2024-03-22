@@ -5,7 +5,7 @@ generator client {
 }
 
 
-// postgresql://turnover_owner:Y3WbCmRE2eVn@ep-winter-water-a5k567pq.us-east-2.aws.neon.tech/turnover?sslmode=require
+DATABASE_URL=  postgresql://turnover_owner:Y3WbCmRE2eVn@ep-winter-water-a5k567pq.us-east-2.aws.neon.tech/turnover?sslmode=require
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
