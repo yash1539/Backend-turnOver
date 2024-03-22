@@ -1,0 +1,28 @@
+// prisma/schema.prisma
+//  eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcGlfa2V5IjoiOGViMzg4ODEtMWNjOC00OTBkLWI2OTUtNzgyMGU0YzI5YzU4IiwidGVuYW50X2lkIjoiMTU0ZTlhYWU4MDY0YWMzZWE5NTRkMmI3ODA5ODJiYzk0NTEyN2Q1MWJmOTQ3OTdlN2FmYTdhYjgzNzU1M2RkMCIsImludGVybmFsX3NlY3JldCI6ImViNjYyNGY0LTM1N2MtNGVjYi1hMzBlLWYwZWMzZGQyNGNhMSJ9.O_zdvanxZkPKAEpP1ngFT7VPHrjhm9vEoFVQ6LMxtlM
+generator client {
+  provider = "prisma-client-js"
+}
+
+
+// postgresql://turnover_owner:Y3WbCmRE2eVn@ep-winter-water-a5k567pq.us-east-2.aws.neon.tech/turnover?sslmode=require
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id        Int        @id @default(autoincrement())
+  name      String
+  email     String     @unique
+  password  String
+  emailVerified Boolean    @default(false)
+  categories Category[] 
+}
+
+model Category {
+  id       Int      @id @default(autoincrement())
+  name     String
+  users    User[]   
+}
+
